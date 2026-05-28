@@ -8,14 +8,17 @@
   },
   "item": [
     {
-      "name": "IoT Mock Root",
+      "name": "IoT Health Check",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{iot_base_url}}",
+          "raw": "{{iot_base_url}}/health",
           "host": [
             "{{iot_base_url}}"
+          ],
+          "path": [
+            "health"
           ]
         }
       },
@@ -23,26 +26,29 @@
         {
           "listen": "test",
           "script": {
+            "type": "text/javascript",
             "exec": [
-              "pm.test('Status code is 200', function () {",
+              "pm.test('IoT status code is 200', function () {",
               "    pm.response.to.have.status(200);",
               "});"
-            ],
-            "type": "text/javascript"
+            ]
           }
         }
       ],
       "response": []
     },
     {
-      "name": "Vision Mock Root",
+      "name": "Vision Health Check",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{vision_base_url}}",
+          "raw": "{{vision_base_url}}/health",
           "host": [
             "{{vision_base_url}}"
+          ],
+          "path": [
+            "health"
           ]
         }
       },
@@ -50,12 +56,12 @@
         {
           "listen": "test",
           "script": {
+            "type": "text/javascript",
             "exec": [
-              "pm.test('Status code is 200', function () {",
+              "pm.test('Vision status code is 200', function () {",
               "    pm.response.to.have.status(200);",
               "});"
-            ],
-            "type": "text/javascript"
+            ]
           }
         }
       ],
@@ -63,4 +69,3 @@
     }
   ]
 }
-
